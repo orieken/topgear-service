@@ -1,0 +1,6 @@
+--require ts-node/register
+--watch-extensions ts
+spec-helper.ts
+./{,!(node_modules)/**/}*.spec.ts
+./{,!(node_modules)/**/}*.ts"
+
