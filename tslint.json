@@ -1,0 +1,20 @@
+{
+  "extends": "tslint:all",
+  "rules": {
+    "comment-format": false,
+    "completed-docs": false,
+    "interface-name": false,
+    "member-access": false,
+    "newline-before-return": false,
+    "no-any": false,
+    "no-inferred-empty-object-type": false,
+    "no-magic-numbers": false,
+    "no-parameter-properties": false,
+    "no-unsafe-any": false,
+    "trailing-comma": false,
+    "typedef": false,
+    "no-implicit-dependencies": [true, "dev"],
+    "no-unnecessary-class": ["allow-static-only"],
+    "quotemark": [true, "single", "avoid-escape", "avoid-template"]
+  }
+}

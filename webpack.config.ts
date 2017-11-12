@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-
+const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 const config: any = {};
 
 config.entry = './app.ts';
@@ -39,12 +39,24 @@ config.resolve = {
   ],
 };
 
+config.plugins = [
+  new NyanProgressPlugin()
+];
+
 config.module = {};
 config.module.rules = [
   {
     test: /\.tsx?$/,
     use: 'ts-loader',
     exclude: /node_modules/
+  },
+  {
+    test: /\.ts$/,
+    enforce: 'pre',
+    loader: 'tslint-loader',
+    options: {
+      typeCheck: true
+    }
   }
 ];
 

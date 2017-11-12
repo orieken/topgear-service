@@ -1,7 +1,7 @@
+import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as logger from 'morgan';
-import * as bodyParser from 'body-parser';
-import request = require('request');
+import * as request from 'request';
 
 export class App {
 
@@ -11,7 +11,7 @@ export class App {
     this.express = express();
     this.middleware();
     this.routes();
-    this.express.listen(7000, () => console.log('Example app listening on port 7000!'));
+    this.express.listen(7000);
   }
 
   private middleware(): void {
@@ -21,14 +21,14 @@ export class App {
   }
 
   private routes(): void {
-    let router = express.Router();
+    const router = express.Router();
 
-    router.get('/', (req, res, next) => { res.json({ message: 'Hello World!' })});
+    router.get('/', (req, res) => res.json({ message: 'Hello World!' }));
     router.get('/foo', (req, res) => res.send('Hello World!'));
-    router.get('/users', async (req, res) => { request('http://derp-bear-users-api.herokuapp.com/users').pipe(res) });
+    router.get('/users', (req, res) => request('http://derp-bear-users-api.herokuapp.com/users').pipe(res));
 
     this.express.use('/', router);
   }
 }
 
-export default new App().express;
+export default new App().express; // tslint:disable-line
