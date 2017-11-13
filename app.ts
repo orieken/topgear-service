@@ -4,14 +4,15 @@ import * as logger from 'morgan';
 import * as request from 'request';
 
 export class App {
-
+  public port =  process.env['PORT'] || 7000;
   public express: express.Application;
 
   constructor() {
+
     this.express = express();
     this.middleware();
     this.routes();
-    this.express.listen(7000);
+    this.express.listen(this.port);
   }
 
   private middleware(): void {
