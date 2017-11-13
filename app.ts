@@ -4,8 +4,10 @@ import * as logger from 'morgan';
 import * as request from 'request';
 
 export class App {
-  public port =  (process.env['PORT'] || 7000);
   public express: express.Application;
+  /* tslint:disable */
+  public port: string | number =  (process.env['PORT'] || 7000);
+  /* tslint:enable */
 
   constructor() {
 
