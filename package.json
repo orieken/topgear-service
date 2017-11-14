@@ -7,7 +7,8 @@
     "start": "npm run webpack && npm run server",
     "test": "mocha test --opts mocha.opts",
     "server": "nodemon ./dist/main.js localhost 7000",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "postinstall": "npm run webpack"
   },
   "author": "Oscar Rieken",
   "license": "ISC",
