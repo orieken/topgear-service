@@ -1,20 +1,22 @@
 const path = require('path');
-const fs = require('fs');
+const FileSystem = require('fs');
 const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 const config: any = {};
 
 config.entry = './app.ts';
 config.target = 'node';
 
-config.externals = fs.readdirSync('node_modules')
-    .reduce(function (acc, mod) {
-      if (mod === '.bin') {
-        return acc
-      }
+const getModules = (acc, mod) => {
+  if (mod === '.bin') {
+    return acc;
+  }
 
-      acc[mod] = 'commonjs ' + mod;
-      return acc
-    }, {});
+  acc[mod] = 'commonjs ' + mod;
+  return acc;
+};
+
+config.externals = FileSystem.readdirSync('node_modules')
+                             .reduce(getModules, {});
 
 config.node = {
   console: false,
